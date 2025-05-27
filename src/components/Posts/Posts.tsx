@@ -1,49 +1,33 @@
 import { useEffect, useState } from 'react';
 import { Box, Button, Flex, SimpleGrid, Text } from '@mantine/core';
-import { API } from '@/helpers';
+import { deletePost, fetchPosts } from '@/api/posts';
 import { Post } from '@/Interfaces';
 
-export default function Posts() {
-  const [posts, setPosts] = useState([]); // Инициализируем как пустой массив
+export default function Posts({ posts, setPosts }: { posts: Post[]; setPosts: () => {} }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      setIsLoading(true);
-
+    const loadPosts = async () => {
       try {
-        const response = await fetch(`${API}/posts`);
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const result = await response.json();
-        setPosts(result.data || []); // Сохраняем только массив data
+        setIsLoading(true);
+        const data = await fetchPosts();
+        setPosts(data);
       } catch (err) {
-        console.error('Fetch error:', err);
+        console.error(err);
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchPosts();
+    loadPosts();
   }, []);
 
   const DeletePost = async (id: number) => {
     try {
-      const response = await fetch(`${API}/posts/${id}`, {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      setPosts((prevPosts) => prevPosts.filter((post) => post.id !== id));
+      deletePost(id);
+      setPosts(() => posts.filter((item) => item.id !== id));
     } catch (err) {
-      console.error('Fetch error:', err);
-    } finally {
-      setIsLoading(false);
+      console.error(err);
     }
   };
 

@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { title } from 'process';
 import { Button, Flex, Modal, TextInput } from '@mantine/core';
+import { createPost } from '@/api/posts';
 import { API } from '@/helpers';
 
-export default function CreatePostModal({ opened, close }) {
+export default function CreatePostModal({ opened, close, setPosts, posts }) {
   const [info, setInfo] = useState({ title: '', content: '', categoryId: 1, tag: [2, 3] });
   const handleClose = () => {
     setInfo({ title: '', content: '', categoryId: 1, tag: [2, 3] });
@@ -12,17 +14,11 @@ export default function CreatePostModal({ opened, close }) {
   const Submit = (event) => {
     event.preventDefault();
     try {
-      fetch(`${API}/posts`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          title: info.title,
-          content: info.content,
-          category_id: info.categoryId,
-          tag_ids: info.tag,
-        }),
+      createPost({
+        titlePost: info.title,
+        contentPost: info.content,
+        category: info.categoryId,
+        tags: info.tag,
       });
     } catch (error) {
       console.error(error);
