@@ -1,9 +1,19 @@
 import { useEffect, useState } from 'react';
-import { Box, Button, Flex, SimpleGrid, Text } from '@mantine/core';
+import { Box, Button, Flex, Loader, SimpleGrid, Text } from '@mantine/core';
 import { deletePost, fetchPosts } from '@/api/posts';
 import { Post } from '@/Interfaces';
 
-export default function Posts({ posts, setPosts }: { posts: Post[]; setPosts: () => {} }) {
+export default function Posts({
+  posts,
+  setPosts,
+  openUpdate,
+  setCheckId,
+}: {
+  posts: Post[];
+  setPosts: any;
+  openUpdate: () => void;
+  setCheckId: any;
+}) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -32,7 +42,11 @@ export default function Posts({ posts, setPosts }: { posts: Post[]; setPosts: ()
   };
 
   if (isLoading) {
-    return <div>Loading posts...</div>;
+    return (
+      <Flex justify="center" align="center" w="100%" h="100%">
+        <Loader color="blue" />
+      </Flex>
+    );
   }
 
   return (
@@ -42,9 +56,24 @@ export default function Posts({ posts, setPosts }: { posts: Post[]; setPosts: ()
           <Box bg="gray" p={10} key={post.id}>
             <Flex justify="space-between" align="center">
               <Text fw={800}>{post.title}</Text>
-              <Button bg="red" onClick={() => DeletePost(post.id)}>
-                Delete
-              </Button>
+              <Flex gap={10}>
+                <Button bg="blue" w={80}>
+                  Check
+                </Button>
+                <Button
+                  bg="green"
+                  w={80}
+                  onClick={() => {
+                    setCheckId(post.id);
+                    openUpdate();
+                  }}
+                >
+                  Edit
+                </Button>
+                <Button bg="red" onClick={() => DeletePost(post.id)} w={80}>
+                  Delete
+                </Button>
+              </Flex>
             </Flex>
 
             <p>{post.content}</p>

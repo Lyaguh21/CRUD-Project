@@ -3,23 +3,33 @@ import { Button, Flex, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import CreatePostModal from '@/components/Posts/CreatePostModal';
 import Posts from '@/components/Posts/Posts';
+import UpdatePostModal from '@/components/Posts/UpdatePostModal';
 import { Post } from '@/Interfaces';
 
 export function HomePage() {
-  const [openedCreate, { open, close }] = useDisclosure(false);
+  const [openedCreate, { open: openCreate, close: closeCreate }] = useDisclosure(false);
+  const [openedUpdate, { open: openUpdate, close: closeUpdate }] = useDisclosure(false);
+
   const [posts, setPosts] = useState<Post[]>([]);
+  const [checkId, setCheckId] = useState<number>();
   return (
     <>
       <Text size="xl" ta="center" fw={600}>
         Посты
       </Text>
       <Flex py={5}>
-        <Button onClick={open}>Создать</Button>
+        <Button onClick={openCreate}>Создать</Button>
       </Flex>
 
-      <Posts posts={posts} setPosts={setPosts} />
+      <Posts posts={posts} setPosts={setPosts} setCheckId={setCheckId} openUpdate={openUpdate} />
 
-      <CreatePostModal opened={openedCreate} close={close} setPosts={setPosts} />
+      <CreatePostModal opened={openedCreate} close={closeCreate} setPosts={setPosts} />
+      <UpdatePostModal
+        opened={openedUpdate}
+        close={closeUpdate}
+        setPosts={setPosts}
+        checkId={checkId}
+      />
     </>
   );
 }

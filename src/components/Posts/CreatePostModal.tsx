@@ -23,12 +23,7 @@ export default function CreatePostModal({
     event.preventDefault();
     try {
       setLoading(true);
-      await createPost({
-        titlePost: info.title,
-        contentPost: info.content,
-        category: info.categoryId,
-        tags: info.tag,
-      });
+      await createPost(info);
       const data = await fetchPosts();
       setPosts(data);
     } catch (error) {
