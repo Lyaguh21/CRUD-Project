@@ -19,7 +19,7 @@ export function HomePage() {
 
       <Posts posts={posts} setPosts={setPosts} />
 
-      <CreatePostModal opened={openedCreate} close={close} setPosts={setPosts} posts={posts} />
+      <CreatePostModal opened={openedCreate} close={close} setPosts={setPosts} />
     </>
   );
 }
