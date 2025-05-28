@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { motion } from 'motion/react';
 import { Button, Flex, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import AnimatedText from '@/components/motion/AnimatedText';
 import CheckPostModal from '@/components/Posts/CheckPostModal';
 import CreatePostModal from '@/components/Posts/CreatePostModal';
 import Posts from '@/components/Posts/Posts';
@@ -17,12 +19,11 @@ export function HomePage() {
   return (
     <>
       <Text size="xl" ta="center" fw={600}>
-        Посты
+        <AnimatedText text="Посты" />
       </Text>
       <Flex py={5}>
-        <Button onClick={openCreate}>Создать</Button>
+        <Button onClick={openCreate}>Создать</Button>{' '}
       </Flex>
-
       <Posts
         posts={posts}
         setPosts={setPosts}
@@ -30,7 +31,6 @@ export function HomePage() {
         openUpdate={openUpdate}
         openCheck={openCheck}
       />
-
       <CheckPostModal
         opened={openedCheck}
         close={closeCheck}

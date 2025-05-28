@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { motion } from 'motion/react';
 import { Box, Button, Flex, Loader, SimpleGrid, Text } from '@mantine/core';
 import { deletePost, fetchPosts } from '@/api/posts';
 import { Post } from '@/Interfaces';
@@ -55,43 +56,49 @@ export default function Posts({
     <>
       <SimpleGrid cols={2} spacing="xs" verticalSpacing="xs">
         {posts.map((post: Post) => (
-          <Box bg="gray" p={10} key={post.id}>
-            <Flex justify="space-between" align="center">
-              <Text fw={800}>{post.title}</Text>
-              <Flex gap={10}>
-                <Button
-                  bg="blue"
-                  w={80}
-                  onClick={() => {
-                    setCheckId(post.id);
-                    openCheck();
-                  }}
-                >
-                  Check
-                </Button>
-                <Button
-                  bg="green"
-                  w={80}
-                  onClick={() => {
-                    setCheckId(post.id);
-                    openUpdate();
-                  }}
-                >
-                  Edit
-                </Button>
-                <Button bg="red" onClick={() => DeletePost(post.id)} w={80}>
-                  Delete
-                </Button>
+          <motion.div
+            initial={{ y: -30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: 'easeInOut' }}
+          >
+            <Box bg="gray" p={10} key={post.id}>
+              <Flex justify="space-between" align="center">
+                <Text fw={800}>{post.title}</Text>
+                <Flex gap={10}>
+                  <Button
+                    bg="blue"
+                    w={80}
+                    onClick={() => {
+                      setCheckId(post.id);
+                      openCheck();
+                    }}
+                  >
+                    Check
+                  </Button>
+                  <Button
+                    bg="green"
+                    w={80}
+                    onClick={() => {
+                      setCheckId(post.id);
+                      openUpdate();
+                    }}
+                  >
+                    Edit
+                  </Button>
+                  <Button bg="red" onClick={() => DeletePost(post.id)} w={80}>
+                    Delete
+                  </Button>
+                </Flex>
               </Flex>
-            </Flex>
 
-            <p>{post.content}</p>
-            <div>Category: {post.category.name}</div>
-            <div>Tags: {post.tags.map((tag) => tag.name).join(', ')}</div>
-            <time dateTime={post.created_at}>
-              Posted on: {new Date(post.created_at).toLocaleDateString()}
-            </time>
-          </Box>
+              <p>{post.content}</p>
+              <div>Category: {post.category.name}</div>
+              <div>Tags: {post.tags.map((tag) => tag.name).join(', ')}</div>
+              <time dateTime={post.created_at}>
+                Posted on: {new Date(post.created_at).toLocaleDateString()}
+              </time>
+            </Box>
+          </motion.div>
         ))}
       </SimpleGrid>
     </>

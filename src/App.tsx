@@ -7,8 +7,7 @@ import { theme } from './theme';
 export default function App() {
   return (
     <MantineProvider theme={theme}>
-      <Box px={20}>
-        {' '}
+      <Box>
         <Router />
       </Box>
     </MantineProvider>
