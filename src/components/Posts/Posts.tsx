@@ -7,11 +7,13 @@ export default function Posts({
   posts,
   setPosts,
   openUpdate,
+  openCheck,
   setCheckId,
 }: {
   posts: Post[];
   setPosts: any;
   openUpdate: () => void;
+  openCheck: () => void;
   setCheckId: any;
 }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -57,7 +59,14 @@ export default function Posts({
             <Flex justify="space-between" align="center">
               <Text fw={800}>{post.title}</Text>
               <Flex gap={10}>
-                <Button bg="blue" w={80}>
+                <Button
+                  bg="blue"
+                  w={80}
+                  onClick={() => {
+                    setCheckId(post.id);
+                    openCheck();
+                  }}
+                >
                   Check
                 </Button>
                 <Button
