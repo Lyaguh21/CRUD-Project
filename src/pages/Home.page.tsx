@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'motion/react';
 import { Button, Flex, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import AnimatedText from '@/components/motion/AnimatedText';
@@ -7,14 +6,14 @@ import CheckPostModal from '@/components/Posts/CheckPostModal';
 import CreatePostModal from '@/components/Posts/CreatePostModal';
 import Posts from '@/components/Posts/Posts';
 import UpdatePostModal from '@/components/Posts/UpdatePostModal';
-import { Post } from '@/Interfaces';
+import { IPost } from '@/entities/post/type';
 
 export function HomePage() {
   const [openedCreate, { open: openCreate, close: closeCreate }] = useDisclosure(false);
   const [openedUpdate, { open: openUpdate, close: closeUpdate }] = useDisclosure(false);
   const [openedCheck, { open: openCheck, close: closeCheck }] = useDisclosure(false);
 
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<IPost[]>([]);
   const [checkId, setCheckId] = useState<number>();
   return (
     <>
@@ -22,7 +21,7 @@ export function HomePage() {
         <AnimatedText text="Посты" />
       </Text>
       <Flex py={5}>
-        <Button onClick={openCreate}>Создать</Button>{' '}
+        <Button onClick={openCreate}>Создать</Button>
       </Flex>
       <Posts
         posts={posts}

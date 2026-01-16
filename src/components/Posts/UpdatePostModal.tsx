@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button, Flex, LoadingOverlay, Modal, TextInput } from '@mantine/core';
-import { detailedFetchPosts, fetchPosts, updatePost } from '@/api/posts';
+import { detailedFetchPosts, fetchPosts, updatePost } from '@/shared/api/posts';
 
 export default function UpdatePostModal({
   opened,

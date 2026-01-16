@@ -1,7 +1,8 @@
-import { API } from '@/helpers';
-import { Post } from '@/Interfaces';
+import { IPost } from '@/entities/post/type';
 
-export const fetchPosts = async (): Promise<Post[]> => {
+const API = 'https://simplecrudapi.com/api';
+
+export const fetchPosts = async (): Promise<IPost[]> => {
   const response = await fetch(`${API}/posts`);
   if (!response.ok) {
     throw new Error('Failed to fetch posts');
@@ -10,7 +11,7 @@ export const fetchPosts = async (): Promise<Post[]> => {
   return result.data || result;
 };
 
-export const detailedFetchPosts = async (id: number): Promise<Post> => {
+export const detailedFetchPosts = async (id: number): Promise<IPost> => {
   if (id === undefined) {
     throw new Error('id is undefined');
   }
@@ -21,11 +22,11 @@ export const detailedFetchPosts = async (id: number): Promise<Post> => {
   const result = await response.json();
 
   if (result.data) {
-    return result.data as Post;
+    return result.data as IPost;
   }
 
   if (result.id) {
-    return result as Post;
+    return result as IPost;
   }
 
   throw new Error('Invalid post data structure');

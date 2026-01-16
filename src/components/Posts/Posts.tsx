@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Box, Button, Flex, Loader, SimpleGrid, Text } from '@mantine/core';
-import { deletePost, fetchPosts } from '@/api/posts';
-import { Post } from '@/Interfaces';
+
+import { deletePost, fetchPosts } from '@/shared/api/posts';
+import { IPost } from '@/entities/post/type';
 
 export default function Posts({
   posts,
@@ -11,7 +12,7 @@ export default function Posts({
   openCheck,
   setCheckId,
 }: {
-  posts: Post[];
+  posts: IPost[];
   setPosts: any;
   openUpdate: () => void;
   openCheck: () => void;
@@ -55,7 +56,7 @@ export default function Posts({
   return (
     <>
       <SimpleGrid cols={2} spacing="xs" verticalSpacing="xs">
-        {posts.map((post: Post) => (
+        {posts.map((post: IPost) => (
           <motion.div
             initial={{ y: -30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}

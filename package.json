@@ -20,12 +20,13 @@
     "storybook:build": "storybook build"
   },
   "dependencies": {
-    "@mantine/core": "8.0.1",
-    "@mantine/hooks": "8.0.1",
+    "@mantine/core": "8.3.12",
+    "@mantine/hooks": "8.3.12",
+    "@reduxjs/toolkit": "^2.11.2",
     "motion": "^12.15.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router-dom": "^7.5.3"
+    "react-redux": "^9.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.26.0",

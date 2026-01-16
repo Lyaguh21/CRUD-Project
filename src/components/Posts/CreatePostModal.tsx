@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Flex, LoadingOverlay, Modal, TextInput } from '@mantine/core';
-import { createPost, fetchPosts } from '@/api/posts';
+import { createPost, fetchPosts } from '@/shared/api/posts';
 
 export default function CreatePostModal({
   opened,

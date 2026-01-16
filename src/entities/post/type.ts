@@ -1,21 +1,21 @@
-export interface Tag {
+export interface ITag {
   id: number;
   name: string;
   description: string;
 }
 
-export interface Category {
+export interface ICategory {
   id: number;
   name: string;
   description: string;
 }
 
-export interface Post {
+export interface IPost {
   id: number;
   title: string;
   content: string;
-  category: Category;
-  tags: Tag[];
+  category: ICategory;
+  tags: ITag[];
   created_at: string;
   updated_at: string;
 }
