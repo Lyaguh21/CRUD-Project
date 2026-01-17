@@ -21,8 +21,10 @@
   },
   "dependencies": {
     "@mantine/core": "8.3.12",
+    "@mantine/form": "^8.3.12",
     "@mantine/hooks": "8.3.12",
     "@reduxjs/toolkit": "^2.11.2",
+    "@tabler/icons-react": "^3.36.1",
     "motion": "^12.15.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

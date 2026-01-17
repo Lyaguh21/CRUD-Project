@@ -19,3 +19,13 @@ export interface IPost {
   created_at: string;
   updated_at: string;
 }
+
+export type ICreatePost = Pick<IPost, 'title' | 'content'> & {
+  category_id: number;
+  tag_ids: number[];
+};
+
+export type IUpdatePost = Pick<IPost, 'title' | 'content'> & {
+  category_id: number;
+  tag_ids: number[];
+};
