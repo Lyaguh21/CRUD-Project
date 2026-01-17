@@ -1,34 +1,30 @@
-# Mantine Vite template
+# CRUD-Project
+## О проекте
 
-## Features
+Проект организован вокруг сущности `post` и реализует базовый CRUD через модальные формы: создание, просмотр, обновление и удаление. 
 
-This template comes with the following features:
+## Технологии:
 
-- [PostCSS](https://postcss.org/) with [mantine-postcss-preset](https://mantine.dev/styles/postcss-preset)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Storybook](https://storybook.js.org/)
-- [Vitest](https://vitest.dev/) setup with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
-- ESLint setup with [eslint-config-mantine](https://github.com/mantinedev/eslint-config-mantine)
+- Vite 
+- Mantine UI
+- React
+- Redux Toolkit
+- TypeScript
 
-## npm scripts
+## Структура проекта
+- FSD
 
-## Build and dev scripts
 
-- `dev` – start development server
-- `build` – build production version of the app
-- `preview` – locally preview production build
+## Быстрый старт
 
-### Testing scripts
+1. Установите зависимости:
 
-- `typecheck` – checks TypeScript types
-- `lint` – runs ESLint
-- `prettier:check` – checks files with Prettier
-- `vitest` – runs vitest tests
-- `vitest:watch` – starts vitest watch
-- `test` – runs `vitest`, `prettier:check`, `lint` and `typecheck` scripts
+```bash
+npm install
+```
 
-### Other scripts
+2. Запустить дев-сервер:
 
-- `storybook` – starts storybook dev server
-- `storybook:build` – build production storybook bundle to `storybook-static`
-- `prettier:write` – formats all files with Prettier
+```bash
+npm run dev
+```

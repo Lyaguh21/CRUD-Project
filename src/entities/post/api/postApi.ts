@@ -9,8 +9,8 @@ export const postApi = baseApi.injectEndpoints({
       providesTags: (result) =>
         Array.isArray(result)
           ? [
-              ...result.map((post) => ({ type: 'Posts' as const, id: post.id })),
               { type: 'Posts' as const, id: 'LIST' },
+              ...result.map((post) => ({ type: 'Posts' as const, id: post.id })),
             ]
           : [{ type: 'Posts' as const, id: 'LIST' }],
     }),
@@ -48,7 +48,10 @@ export const postApi = baseApi.injectEndpoints({
         url: `/posts/${id}`,
         method: 'DELETE',
       }),
-      invalidatesTags: [{ type: 'Posts' as const, id: 'LIST' }],
+      invalidatesTags: (_result, _error, id) => [
+        { type: 'Posts' as const, id: 'LIST' },
+        { type: 'Posts' as const, id },
+      ],
     }),
   }),
 });
