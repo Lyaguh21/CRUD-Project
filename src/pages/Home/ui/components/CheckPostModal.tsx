@@ -1,8 +1,12 @@
 import { Badge, Box, Divider, Flex, Group, Modal, Text } from '@mantine/core';
-import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
-import { IPost } from '@/entities/post/model/type';
-import { selectOpenCheckPostModal, selectSelectedPost } from '@/entities/view/model/viewSelectors';
-import { setOpenCheckPostModal } from '@/entities/view/model/viewSlice';
+import { IPost } from '@/entities/post';
+import {
+  selectOpenCheckPostModal,
+  selectSelectedPost,
+  setOpenCheckPostModal,
+} from '@/entities/view';
+//*fixed
+import { useAppDispatch, useAppSelector } from '@/shared/lib';
 
 export default function CheckPostModal() {
   const dispatch = useAppDispatch();

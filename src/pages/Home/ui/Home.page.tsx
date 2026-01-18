@@ -1,16 +1,19 @@
-import { Box } from '@mantine/core';
+import { Box, ScrollArea } from '@mantine/core';
+//* fixed
 import CheckPostModal from './components/CheckPostModal';
-import Header from './components/Header';
-import PostsList from './components/PostsList';
 import CreatePostModal from './components/CreatePostModal';
 import UpdatePostModal from './components/UpdatePostModal';
+import Header from './sections/Header';
+import PostsList from './sections/PostsList';
 
-export function HomePage() {
+export default function HomePage() {
   return (
     <>
       <Box px={20}>
         <Header />
-        <PostsList />
+        <ScrollArea w="100%" h="90vh">
+          <PostsList />
+        </ScrollArea>
       </Box>
 
       <CheckPostModal />

@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IPost } from '@/entities/post/model/type';
+
+//* fixed
+import { IPost } from '@/entities/post/@x/view';
 
 export interface IViewState {
   selectedPost: IPost | null;

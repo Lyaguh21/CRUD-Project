@@ -1,9 +1,9 @@
 import { Button, Flex, LoadingOverlay, Modal, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
-import { useCreatePostMutation } from '@/entities/post/api/postApi';
-import { selectOpenCreatePostModal } from '@/entities/view/model/viewSelectors';
-import { setOpenCreatePostModal } from '@/entities/view/model/viewSlice';
+//* fixed
+import { useAppDispatch, useAppSelector } from '@/shared/lib';
+import { useCreatePostMutation } from '@/entities/post';
+import { selectOpenCreatePostModal, setOpenCreatePostModal } from '@/entities/view';
 
 export default function CreatePostModal() {
   const [createPost, { isLoading }] = useCreatePostMutation();

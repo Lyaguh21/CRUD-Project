@@ -1,7 +1,7 @@
 import { Flex, Loader, SimpleGrid, Skeleton } from '@mantine/core';
-import { useGetPostsQuery } from '@/entities/post/api/postApi';
-import { IPost } from '@/entities/post/model/type';
-import PostTemplate from './PostTemplate';
+//* fixed
+import { IPost, useGetPostsQuery } from '@/entities/post';
+import PostTemplate from '../components/PostTemplate';
 
 export default function PostsList() {
   const { data: posts, isLoading, isFetching } = useGetPostsQuery();

@@ -1,9 +1,10 @@
 import { IconRefresh } from '@tabler/icons-react';
 import { ActionIcon, Button, Flex, Text } from '@mantine/core';
-import { useAppDispatch } from '@/app/store/hooks';
-import { useGetPostsQuery } from '@/entities/post/api/postApi';
-import { setOpenCreatePostModal } from '@/entities/view/model/viewSlice';
-import AnimatedText from '@/shared/ui/AnimatedText';
+import { useGetPostsQuery } from '@/entities/post';
+import { setOpenCreatePostModal } from '@/entities/view';
+//* fixed
+import { useAppDispatch } from '@/shared/lib';
+import { AnimatedText } from '@/shared/ui';
 
 export default function Header() {
   const { refetch } = useGetPostsQuery();

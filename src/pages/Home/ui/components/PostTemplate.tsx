@@ -1,14 +1,10 @@
 import { IconEdit, IconEye, IconTrash } from '@tabler/icons-react';
 import { motion } from 'motion/react';
 import { Badge, Button, Card, Group, Text } from '@mantine/core';
-import { useAppDispatch } from '@/app/store/hooks';
-import { useDeletePostMutation } from '@/entities/post/api/postApi';
-import { IPost } from '@/entities/post/model/type';
-import {
-  setOpenCheckPostModal,
-  setOpenEditPostModal,
-  setSelectedPost,
-} from '@/entities/view/model/viewSlice';
+import { IPost, useDeletePostMutation } from '@/entities/post';
+import { setOpenCheckPostModal, setOpenEditPostModal, setSelectedPost } from '@/entities/view';
+//* fixed
+import { useAppDispatch } from '@/shared/lib';
 
 interface PostTemplateProps {
   post: IPost;

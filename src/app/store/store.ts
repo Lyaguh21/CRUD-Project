@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { viewSlice } from '@/entities/view/model/viewSlice';
-import { baseApi } from '@/shared/api/baseApi';
+//* fixed
+import { viewSlice } from '@/entities/view';
+import { baseApi } from '@/shared/api';
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,12 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApi.middleware),
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export type _RootState = ReturnType<typeof store.getState>;
+export type _AppDispatch = typeof store.dispatch;
+
+declare global {
+  type RootState = _RootState;
+  type AppDispatch = _AppDispatch;
+}
+
+

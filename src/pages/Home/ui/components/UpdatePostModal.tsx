@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { Button, Flex, LoadingOverlay, Modal, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
-import { useUpdatePostMutation } from '@/entities/post/api/postApi';
-import { selectOpenEditPostModal, selectSelectedPost } from '@/entities/view/model/viewSelectors';
-import { setOpenEditPostModal } from '@/entities/view/model/viewSlice';
+//* fixed
+import { useAppDispatch, useAppSelector } from '@/shared/lib';
+import { useUpdatePostMutation } from '@/entities/post';
+import { selectOpenEditPostModal, selectSelectedPost, setOpenEditPostModal } from '@/entities/view';
 
 export default function UpdatePostModal() {
   const [updatePost, { isLoading }] = useUpdatePostMutation();

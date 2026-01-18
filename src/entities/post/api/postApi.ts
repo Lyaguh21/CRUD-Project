@@ -1,5 +1,7 @@
-import { baseApi } from '@/shared/api/baseApi';
-import { ICreatePost, IPost, IUpdatePost } from '../model/type';
+//* fixed
+import { baseApi } from '@/shared/api';
+import { ICreatePost, IPost, IUpdatePost } from '../model/type'; 
+
 
 export const postApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
